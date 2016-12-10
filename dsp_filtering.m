@@ -22,7 +22,7 @@ function varargout = dsp_filtering(varargin)
 
 % Edit the above text to modify the response to help dsp_filtering
 
-% Last Modified by GUIDE v2.5 11-Dec-2016 00:21:49
+% Last Modified by GUIDE v2.5 11-Dec-2016 00:51:01
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -468,6 +468,8 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     global s3
     global s4
     
+    global Semnal_1
+    
     Semnal_1 = s1 + s2 + s3 + s4;
     t = 0:1/Fs:durata;
     
@@ -541,6 +543,8 @@ function edit_N_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit_N as text
 %        str2double(get(hObject,'String')) returns contents of edit_N as a double
 
+    global N;    
+    N = str2double(get(handles.edit_N ,'String'));
 
 % --- Executes during object creation, after setting all properties.
 function edit_N_CreateFcn(hObject, eventdata, handles)
@@ -556,18 +560,20 @@ end
 
 
 
-function edit_Ft_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_Ft (see GCBO)
+function edit_Ft1_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_Ft1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit_Ft as text
-%        str2double(get(hObject,'String')) returns contents of edit_Ft as a double
+% Hints: get(hObject,'String') returns contents of edit_Ft1 as text
+%        str2double(get(hObject,'String')) returns contents of edit_Ft1 as a double
 
+    global Ft1;    
+    Ft1 = str2double(get(handles.edit_Ft1 ,'String'));
 
 % --- Executes during object creation, after setting all properties.
-function edit_Ft_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_Ft (see GCBO)
+function edit_Ft1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_Ft1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -576,3 +582,56 @@ function edit_Ft_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+
+function edit_Ft2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_Ft2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_Ft2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_Ft2 as a double
+
+    global Ft2;    
+    Ft2 = str2double(get(handles.edit_Ft2,'String'));
+
+% --- Executes during object creation, after setting all properties.
+function edit_Ft2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_Ft2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in btnSpectruSemnalNefiltrat.
+function btnSpectruSemnalNefiltrat_Callback(hObject, eventdata, handles)
+% hObject    handle to btnSpectruSemnalNefiltrat (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnSpectruSemnalFiltrat.
+function btnSpectruSemnalFiltrat_Callback(hObject, eventdata, handles)
+% hObject    handle to btnSpectruSemnalFiltrat (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnSemnalFiltratTimp.
+function btnSemnalFiltratTimp_Callback(hObject, eventdata, handles)
+% hObject    handle to btnSemnalFiltratTimp (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnCaracteristici.
+function btnCaracteristici_Callback(hObject, eventdata, handles)
+% hObject    handle to btnCaracteristici (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
