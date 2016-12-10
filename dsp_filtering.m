@@ -390,7 +390,7 @@ function btnGenerateS1_Callback(hObject, eventdata, handles)
 
     [t, s] = generateSineWave(A1, F1, Fs, durata, fi0);
     axes(handles.s1_axes);   
-    displayGraph(t, s, durata, 'Sinusoida s1');
+    displayGraph(t, s, durata, 'Sinusoida s1', 1);
     s1 = s;
 
 
@@ -410,7 +410,7 @@ function btnGenerateS2_Callback(hObject, eventdata, handles)
 
     [t, s] = generateSineWave(A2, F2, Fs, durata, fi0);
     axes(handles.s2_axes);
-    displayGraph(t, s, durata, 'Sinusoida s2');
+    displayGraph(t, s, durata, 'Sinusoida s2', 1);
     s2 = s;
 
 % --- Executes on button press in btnGenerateS3.
@@ -429,7 +429,7 @@ function btnGenerateS3_Callback(hObject, eventdata, handles)
 
     [t, s] = generateTriangleWave(F3, Fs, durata);
     axes(handles.s3_axes);
-    displayGraph(t, s, durata, 'Semnal triunghiular s3');
+    displayGraph(t, s, durata, 'Semnal triunghiular s3', 1);
     s3 = s;
 
 % --- Executes on button press in btnGenerateS4.
@@ -448,7 +448,7 @@ function btnGenerateS4_Callback(hObject, eventdata, handles)
 
     [t, s] = generateSquareWave(F4, Fs, durata);
     axes(handles.s4_axes);
-    displayGraph(t, s, durata, 'Semnal dreptunghiular s4');
+    displayGraph(t, s, durata, 'Semnal dreptunghiular s4', 1);
     s4 = s;
 
 % --- Executes on button press in btnGenerateS5.
@@ -474,36 +474,7 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     t = 0:1/Fs:durata;
     
     axes(handles.semnal_1_axes);
-    displayGraph(t, Semnal_1, durata, 'Suma: Semnal_1');
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    function displayGraph(t, s, durata, titleText) 
-        global maxA
-        
-        plot(t, s, 'g');
-        axis([0, durata, -(maxA+1), (maxA+1)]);
-        ylabel('frecventa')
-        xlabel('amplitudine');
-        title(titleText);
-    
-    
+    displayGraph(t, Semnal_1, durata, 'Suma: Semnal_1', 1);
 
 
 % --- Executes on button press in btnFTJ.
@@ -512,6 +483,14 @@ function btnFTJ_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global N
+    global Ft1
+    global Fs
+    global hh
+    global filterType
+    
+    filterType = 'FTJ';
+    hh = generateFTJ(Ft1, N, Fs);
 
 % --- Executes on button press in btnFTS.
 function btnFTS_Callback(hObject, eventdata, handles)
@@ -519,6 +498,14 @@ function btnFTS_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global N
+    global Ft1
+    global Fs
+    global hh
+    global filterType
+    
+    filterType = 'FTS';    
+    hh = generateFTS(Ft1, N, Fs);
 
 % --- Executes on button press in btnFTB.
 function btnFTB_Callback(hObject, eventdata, handles)
@@ -526,6 +513,15 @@ function btnFTB_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global N
+    global Ft1
+    global Ft2
+    global Fs
+    global hh
+    global filterType
+    
+    filterType = 'FTB';    
+    hh = generateFTB(Ft1, Ft2, N, Fs);
 
 % --- Executes on button press in btnFOB.
 function btnFOB_Callback(hObject, eventdata, handles)
@@ -533,6 +529,15 @@ function btnFOB_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global N
+    global Ft1
+    global Ft2
+    global Fs
+    global hh
+    global filterType
+    
+    filterType = 'FOB';    
+    hh = generateFOB(Ft1, Ft2, N, Fs);
 
 
 function edit_N_Callback(hObject, eventdata, handles)
@@ -615,6 +620,13 @@ function btnSpectruSemnalNefiltrat_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global Semnal_1
+    global Fs
+    S = fftshift(abs(fft(Semnal_1)));
+    axaFFT = linspace(-Fs/2, Fs/2, length(Semnal_1));
+    
+    axes(handles.spectru_semnal_1_nefiltrat_axes);
+    displayGraph(S, axaFFT, 'Spectru semnal nefiltrat', 0);
 
 % --- Executes on button press in btnSpectruSemnalFiltrat.
 function btnSpectruSemnalFiltrat_Callback(hObject, eventdata, handles)
@@ -622,6 +634,15 @@ function btnSpectruSemnalFiltrat_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global Semnal_1
+    global hh
+    global Fs
+    S_filtrat = conv(Semnal_1, hh);
+    S_filtrat = fftshift(abs(fft(S_filtrat)));
+    axaFFTS_filtrat = linspace(-Fs/2, Fs/2, length(S_filtrat));
+    
+    axes(handles.spectru_semnal_1_filtrat_axes);
+    displayGraph(axaFFTS_filtrat, S_filtrat, 'Spectru semnal filtrat', 0);
 
 % --- Executes on button press in btnSemnalFiltratTimp.
 function btnSemnalFiltratTimp_Callback(hObject, eventdata, handles)
@@ -629,9 +650,35 @@ function btnSemnalFiltratTimp_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+%TO DO NEXT
 
 % --- Executes on button press in btnCaracteristici.
 function btnCaracteristici_Callback(hObject, eventdata, handles)
 % hObject    handle to btnCaracteristici (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+    global Fs
+    global hh
+    global filterType
+    global Ft1
+    global Ft2
+    
+    axes(handles.caracteristica_amplitudine_filtru_axes);
+    generateCharacteristics( hh, Fs, filterType, Ft1, Ft2);
+    
+
+
+function displayGraph(x, y, durata, titleText, limitA) 
+    global maxA
+
+    plot(x, y, 'g');
+    if limitA == 1
+        axis([0, durata, -(maxA+1), (maxA+1)]);
+    end            
+
+    ylabel('frecventa')
+    xlabel('amplitudine');
+    title(titleText);
+    
