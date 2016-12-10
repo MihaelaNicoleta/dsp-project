@@ -22,7 +22,7 @@ function varargout = dsp_filtering(varargin)
 
 % Edit the above text to modify the response to help dsp_filtering
 
-% Last Modified by GUIDE v2.5 10-Dec-2016 23:41:53
+% Last Modified by GUIDE v2.5 11-Dec-2016 00:21:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -486,6 +486,12 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     
     
     
+    
+    
+    
+    
+    
+    
     function displayGraph(t, s, durata, titleText) 
         global maxA
         
@@ -496,3 +502,77 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
         title(titleText);
     
     
+
+
+% --- Executes on button press in btnFTJ.
+function btnFTJ_Callback(hObject, eventdata, handles)
+% hObject    handle to btnFTJ (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnFTS.
+function btnFTS_Callback(hObject, eventdata, handles)
+% hObject    handle to btnFTS (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnFTB.
+function btnFTB_Callback(hObject, eventdata, handles)
+% hObject    handle to btnFTB (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in btnFOB.
+function btnFOB_Callback(hObject, eventdata, handles)
+% hObject    handle to btnFOB (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
+function edit_N_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_N (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_N as text
+%        str2double(get(hObject,'String')) returns contents of edit_N as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_N_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_N (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit_Ft_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_Ft (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_Ft as text
+%        str2double(get(hObject,'String')) returns contents of edit_Ft as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_Ft_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_Ft (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
