@@ -385,11 +385,12 @@ function btnGenerateS1_Callback(hObject, eventdata, handles)
     global Fs
     global A1
     global F1
+    global maxA
     
 
     [t, s] = generateSineWave(A1, F1, Fs, durata, fi0);
     axes(handles.s1_axes);
-    plot(t, s);
+
 
 % --- Executes on button press in btnGenerateS2.
 function btnGenerateS2_Callback(hObject, eventdata, handles)
@@ -421,7 +422,7 @@ function btnGenerateS3_Callback(hObject, eventdata, handles)
     global F3
     
 
-    [t, s] = generateSquareWave(F4, Fs, durata);
+    [t, s] = generateTriangleWave(F3, Fs, durata);
     axes(handles.s3_axes);
     plot(t, s);
 
@@ -458,3 +459,14 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     [t, s] = generateSineWave(A5, F5, Fs, durata, fi0);
     axes(handles.s5_axes);
     plot(t, s);
+
+    
+    function gg(t, s) 
+        global 
+        
+        plot(t, s, 'g');
+        axis([0, durata, -(maxA+1), (maxA+1)]);
+        ylabel('text')
+        xlabel();
+    
+    

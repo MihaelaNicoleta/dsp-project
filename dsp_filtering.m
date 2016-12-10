@@ -385,11 +385,14 @@ function btnGenerateS1_Callback(hObject, eventdata, handles)
     global Fs
     global A1
     global F1
+    global s1
     
 
     [t, s] = generateSineWave(A1, F1, Fs, durata, fi0);
-    axes(handles.s1_axes);
-    plot(t, s);
+    axes(handles.s1_axes);   
+    displayGraph(t, s, durata, 'Sinusoida s1');
+    s1 = s;
+
 
 % --- Executes on button press in btnGenerateS2.
 function btnGenerateS2_Callback(hObject, eventdata, handles)
@@ -402,11 +405,13 @@ function btnGenerateS2_Callback(hObject, eventdata, handles)
     global Fs
     global A2
     global F2
+    global s2
     
 
     [t, s] = generateSineWave(A2, F2, Fs, durata, fi0);
     axes(handles.s2_axes);
-    plot(t, s);
+    displayGraph(t, s, durata, 'Sinusoida s2');
+    s2 = s;
 
 % --- Executes on button press in btnGenerateS3.
 function btnGenerateS3_Callback(hObject, eventdata, handles)
@@ -419,11 +424,13 @@ function btnGenerateS3_Callback(hObject, eventdata, handles)
     global Fs
     global A3
     global F3
+    global s3
     
 
     [t, s] = generateTriangleWave(F3, Fs, durata);
     axes(handles.s3_axes);
-    plot(t, s);
+    displayGraph(t, s, durata, 'Semnal triunghiular s3');
+    s3 = s;
 
 % --- Executes on button press in btnGenerateS4.
 function btnGenerateS4_Callback(hObject, eventdata, handles)
@@ -436,11 +443,13 @@ function btnGenerateS4_Callback(hObject, eventdata, handles)
     global Fs
     global A4
     global F4
+    global s4
     
 
     [t, s] = generateSquareWave(F4, Fs, durata);
     axes(handles.s4_axes);
-    plot(t, s);
+    displayGraph(t, s, durata, 'Semnal dreptunghiular s4');
+    s4 = s;
 
 % --- Executes on button press in btnGenerateS5.
 function btnGenerateS5_Callback(hObject, eventdata, handles)
@@ -453,8 +462,37 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     global Fs
     global A5
     global F5
-    
 
-    [t, s] = generateSineWave(A5, F5, Fs, durata, fi0);
-    axes(handles.s5_axes);
-    plot(t, s);
+    global s1
+    global s2
+    global s3
+    global s4
+    
+    Semnal_1 = s1 + s2 + s3 + s4;
+    t = 0:1/Fs:durata;
+    
+    axes(handles.semnal_1_axes);
+    displayGraph(t, Semnal_1, durata, 'Suma: Semnal_1');
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    function displayGraph(t, s, durata, titleText) 
+        global maxA
+        
+        plot(t, s, 'g');
+        axis([0, durata, -(maxA+1), (maxA+1)]);
+        ylabel('frecventa')
+        xlabel('amplitudine');
+        title(titleText);
+    
+    
