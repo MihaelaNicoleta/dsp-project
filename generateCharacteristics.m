@@ -14,18 +14,21 @@ function generateCharacteristics( h, Fs, filterType, Ft1, Ft2)
             Hideal(-Ft1+ct : Ft1+ct) = 1;
             Hideal(Ft1+ct : Fs/2+ct) = 0;
         case 'FTS'
+            Hideal(-Fs/2+ct : -Ft1+ct) = 1;
+            Hideal(-Ft1+ct : Ft1+ct) = 0;
+            Hideal(Ft1+ct : Fs/2+ct) = 1;            
+        case 'FTB'
             Hideal(-Fs/2+ct : -Ft2+ct) = 0;
             Hideal(-Ft2+ct : -Ft1+ct) = 1;
             Hideal(-Ft1+ct : Ft1+ct) = 0;
             Hideal(Ft1+ct : Ft2+ct) = 1;
             Hideal(Ft2+ct : Fs/2+ct) = 0;
-        case 'FTB'
+        otherwise
             Hideal(-Fs/2+ct : -Ft2+ct) = 1;
             Hideal(-Ft2+ct : -Ft1+ct) = 0;
             Hideal(-Ft1+ct : Ft1+ct) = 1;
             Hideal(Ft1+ct : Ft2+ct) = 0;
             Hideal(Ft2+ct : Fs/2+ct) = 1;
-        otherwise
     end
     
     
