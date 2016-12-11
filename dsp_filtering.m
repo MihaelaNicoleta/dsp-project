@@ -665,6 +665,8 @@ function btnCaracteristici_Callback(hObject, eventdata, handles)
     global Ft1
     global Ft2
     
+    cla(handles.caracteristica_amplitudine_filtru_axes);
+    
     axes(handles.caracteristica_amplitudine_filtru_axes);
     generateCharacteristics( hh, Fs, filterType, Ft1, Ft2);
     
