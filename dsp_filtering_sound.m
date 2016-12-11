@@ -83,6 +83,14 @@ function btnSpectruSemnal1Nefiltrat_Callback(hObject, eventdata, handles)
 % hObject    handle to btnSpectruSemnal1Nefiltrat (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+    global wav1
+    global Fs1
+
+    S = fftshift(abs(fft(wav1)));
+    axaFFT = linspace(-Fs1/2, Fs1/2, length(wav1));
+    
+    axes(handles.spectru_semnal_audio_1_nefiltrat_axes);
+    displayGraph(axaFFT, S, 'Spectru semnal audio 1 nefiltrat', 0, 0);
 
 
 % --- Executes on button press in btnSpectruSemnal1Filtrat.
@@ -90,6 +98,8 @@ function btnSpectruSemnal1Filtrat_Callback(hObject, eventdata, handles)
 % hObject    handle to btnSpectruSemnal1Filtrat (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+%TO DO NEXT
 
 % --- Executes on button press in btnInfo.
 function btnInfo_Callback(hObject, eventdata, handles)
@@ -112,6 +122,7 @@ function btnSpectruSemnal2Filtrat_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+%TO DO NEXT
 
 % --- Executes on button press in btnSpectruSemnal2Nefiltrat.
 function btnSpectruSemnal2Nefiltrat_Callback(hObject, eventdata, handles)
@@ -119,6 +130,14 @@ function btnSpectruSemnal2Nefiltrat_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+    global wav2
+    global Fs2
+
+    S = fftshift(abs(fft(wav2)));
+    axaFFT = linspace(-Fs2/2, Fs2/2, length(wav2));
+    
+    axes(handles.spectru_semnal_audio_2_nefiltrat_axes);
+    displayGraph(axaFFT, S, 'Spectru semnal audio 2 nefiltrat', 0, 0);
 
 % --- Executes on button press in btnOpenSemnalAudio1.
 function btnOpenSemnalAudio1_Callback(hObject, eventdata, handles)
@@ -149,7 +168,7 @@ function btnRedareSemnal1Filtrat_Callback(hObject, eventdata, handles)
 % hObject    handle to btnRedareSemnal1Filtrat (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+    %TO DO NEXT
 
 % --- Executes on button press in btnOpenSemnalAudio2.
 function btnOpenSemnalAudio2_Callback(hObject, eventdata, handles)
@@ -181,3 +200,5 @@ function btnRedareSemnal2Filtrat_Callback(hObject, eventdata, handles)
 % hObject    handle to btnRedareSemnal2Filtrat (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+%TO DO NEXT
