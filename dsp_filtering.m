@@ -22,7 +22,7 @@ function varargout = dsp_filtering(varargin)
 
 % Edit the above text to modify the response to help dsp_filtering
 
-% Last Modified by GUIDE v2.5 11-Dec-2016 00:51:01
+% Last Modified by GUIDE v2.5 11-Dec-2016 13:41:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -684,3 +684,12 @@ function displayGraph(x, y, durata, titleText, limitA)
     xlabel('amplitudine');
     title(titleText);
     
+
+
+% --- Executes on button press in btnSemnalAudio.
+function btnSemnalAudio_Callback(hObject, eventdata, handles)
+% hObject    handle to btnSemnalAudio (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+    dsp_filtering_sound
