@@ -1,5 +1,4 @@
 function displayGraph(x, y, durata, titleText, limitA, maxA) 
-% generate filter FOB
 
     plot(x, y, 'g');
     if limitA == 1

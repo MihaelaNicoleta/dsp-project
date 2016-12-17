@@ -70,6 +70,9 @@ fi0 = 0;
 %frecventa de esantionare: Fs = 10kHz
 global Fs; 
 Fs = 10000;
+global N;
+N = 100;
+set(handles.edit_N,'string',N);
 
 global maxA;
 global minA;
@@ -392,6 +395,8 @@ function btnGenerateS1_Callback(hObject, eventdata, handles)
     [t, s] = generateSineWave(A1, F1, Fs, durata, fi0);
     axes(handles.s1_axes);   
     displayGraph(t, s, durata, 'Sinusoida s1', 1, maxA);
+    xlabel('timp[s]');
+    zoom on;
     s1 = s;
 
 
@@ -412,7 +417,9 @@ function btnGenerateS2_Callback(hObject, eventdata, handles)
     [t, s] = generateSineWave(A2, F2, Fs, durata, fi0);
     axes(handles.s2_axes);
     displayGraph(t, s, durata, 'Sinusoida s2', 1, maxA);
+    xlabel('timp[s]');
     s2 = s;
+    zoom on;
 
 % --- Executes on button press in btnGenerateS3.
 function btnGenerateS3_Callback(hObject, eventdata, handles)
@@ -432,7 +439,9 @@ function btnGenerateS3_Callback(hObject, eventdata, handles)
     [t, s] = generateTriangleWave(F3, Fs, durata);
     axes(handles.s3_axes);
     displayGraph(t, s, durata, 'Semnal triunghiular s3', 1, maxA);
+    xlabel('timp[s]');
     s3 = s;
+    zoom on;
 
 % --- Executes on button press in btnGenerateS4.
 function btnGenerateS4_Callback(hObject, eventdata, handles)
@@ -452,7 +461,9 @@ function btnGenerateS4_Callback(hObject, eventdata, handles)
     [t, s] = generateSquareWave(F4, Fs, durata);
     axes(handles.s4_axes);
     displayGraph(t, s, durata, 'Semnal dreptunghiular s4', 1, maxA);
+    xlabel('timp[s]');
     s4 = s;
+    zoom on;
 
 % --- Executes on button press in btnGenerateS5.
 function btnGenerateS5_Callback(hObject, eventdata, handles)
@@ -480,6 +491,8 @@ function btnGenerateS5_Callback(hObject, eventdata, handles)
     
     axes(handles.semnal_1_axes);
     displayGraph(t, Semnal_1, durata, 'Suma: Semnal_1', 1, maxA);
+    xlabel('timp[s]');
+    zoom on;
 
 
 % --- Executes on button press in btnFTJ.
@@ -632,6 +645,7 @@ function btnSpectruSemnalNefiltrat_Callback(hObject, eventdata, handles)
     
     axes(handles.spectru_semnal_1_nefiltrat_axes);
     displayGraph(axaFFT, S, 'Spectru semnal nefiltrat', 0, 0);
+    zoom on;
 
 % --- Executes on button press in btnSpectruSemnalFiltrat.
 function btnSpectruSemnalFiltrat_Callback(hObject, eventdata, handles)
@@ -642,12 +656,14 @@ function btnSpectruSemnalFiltrat_Callback(hObject, eventdata, handles)
     global Semnal_1
     global hh
     global Fs
+    global S_filtrat
     S_filtrat = conv(Semnal_1, hh);
-    S_filtrat = fftshift(abs(fft(S_filtrat)));
-    axaFFTS_filtrat = linspace(-Fs/2, Fs/2, length(S_filtrat));
+    Spectru_filtrat = fftshift(abs(fft(S_filtrat)));
+    axaFFTS_filtrat = linspace(-Fs/2, Fs/2, length(Spectru_filtrat));
     
     axes(handles.spectru_semnal_1_filtrat_axes);
-    displayGraph(axaFFTS_filtrat, S_filtrat, 'Spectru semnal filtrat', 0, 0);
+    displayGraph(axaFFTS_filtrat, Spectru_filtrat, 'Spectru semnal filtrat', 0, 0);
+    zoom on;
 
 % --- Executes on button press in btnSemnalFiltratTimp.
 function btnSemnalFiltratTimp_Callback(hObject, eventdata, handles)
@@ -656,6 +672,16 @@ function btnSemnalFiltratTimp_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 %TO DO NEXT
+global S_filtrat
+global Fs
+global durata
+t = 0:1/Fs:durata;
+axes(handles.semnal_filtrat_timp_axes);
+xlabel('timp [s]');
+cla;
+plot(S_filtrat);
+title('Semnal filtrat');
+zoom on;
 
 % --- Executes on button press in btnCaracteristici.
 function btnCaracteristici_Callback(hObject, eventdata, handles)
@@ -674,6 +700,7 @@ function btnCaracteristici_Callback(hObject, eventdata, handles)
     
     axes(handles.caracteristica_amplitudine_filtru_axes);
     generateCharacteristics( hh, Fs, filterType, Ft1, Ft2);
+    zoom on;
 
 % --- Executes on button press in btnSemnalAudio.
 function btnSemnalAudio_Callback(hObject, eventdata, handles)

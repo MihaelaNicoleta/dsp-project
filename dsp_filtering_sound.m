@@ -118,7 +118,7 @@ function btnSpectruSemnal1Filtrat_Callback(hObject, eventdata, handles)
 global Fs1;
 global fwav1;
 global wav1;
-hh = generateFOB(600,1300,2001,Fs1);
+hh = generateFOB(500,1400,4001,Fs1);
 fwav1 = conv(wav1,hh);
 
 fswav1 = fftshift(abs(fft(fwav1)));
