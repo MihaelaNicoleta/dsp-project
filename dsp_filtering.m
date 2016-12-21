@@ -436,7 +436,7 @@ function btnGenerateS3_Callback(hObject, eventdata, handles)
     global maxA
     
 
-    [t, s] = generateTriangleWave(F3, Fs, durata);
+    [t, s] = generateTriangleWave(A3, F3, Fs, durata);
     axes(handles.s3_axes);
     displayGraph(t, s, durata, 'Semnal triunghiular s3', 1, maxA);
     xlabel('timp[s]');
@@ -458,7 +458,7 @@ function btnGenerateS4_Callback(hObject, eventdata, handles)
     
     global maxA
 
-    [t, s] = generateSquareWave(F4, Fs, durata);
+    [t, s] = generateSquareWave(A4, F4, Fs, durata);
     axes(handles.s4_axes);
     displayGraph(t, s, durata, 'Semnal dreptunghiular s4', 1, maxA);
     xlabel('timp[s]');

@@ -144,8 +144,7 @@ function btnRedareSemnal1Filtrat_Callback(hObject, eventdata, handles)
 % hObject    handle to btnRedareSemnal1Filtrat (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-    %TO DO NEXT
-%     TFDI la filtrat
+
 global Fs1;
 global fwav1;
 sound(fwav1,Fs1);
